@@ -1,0 +1,42 @@
+plugins {
+    id 'java'
+}
+
+group = 'mai.autotests'
+version = '1.0-SNAPSHOT'
+
+repositories {
+    mavenCentral()
+}
+
+jar {
+    manifest {
+        attributes 'Main-Class': 'mai.autotests.Main'
+    }
+}
+
+test {
+    enabled = true
+}
+
+
+dependencies {
+    testImplementation platform('org.junit:junit-bom:5.9.1')
+    testImplementation 'org.junit.jupiter:junit-jupiter'
+
+    // Lombok
+    compileOnly 'org.projectlombok:lombok:1.18.22'
+    annotationProcessor 'org.projectlombok:lombok:1.18.22'
+
+    // JUnit
+    testImplementation group: 'junit', name: 'junit', version: '4.13.1'
+
+    // Apache (Copy Files)
+    implementation group: 'commons-io', name: 'commons-io', version: '2.14.0'
+
+
+}
+
+test {
+    useJUnitPlatform()
+}
